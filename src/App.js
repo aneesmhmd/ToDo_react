@@ -21,7 +21,13 @@ function App() {
       </div>
       <div className="input">
         <input value={toDo} onChange={(e)=>setToDo(e.target.value)} type="text" placeholder="🖊️ Add item..." />
-        <i onClick={()=>setToDos([...toDos,{id:Date.now() ,text:toDo, status:false}])} className="fas fa-plus"></i>
+        <i onClick={()=>{
+          if(toDo != ''){
+          setToDos([...toDos,{id:Date.now() ,text:toDo, status:false}])}
+          else{
+            alert('It should not be null')
+          }
+        }} className="fas fa-plus"></i>
       </div>
       
       <div className="todos">
@@ -46,7 +52,7 @@ function App() {
           <div className="right">
               <i onClick={(e)=>{
                 setToDos(toDos.filter(obj2 => {
-                  let temp;
+                  let temp; 
                   if (obj2.id != obj.id){
                     temp = obj2
                   }
